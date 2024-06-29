@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Flavor Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🍦 Ice Cream Flavor Dashboard 🍦</h1>
+        <div class="chart-container">
+            <div class="chart-title">Flavor Popularity</div>
+            <canvas id="flavorChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <div class="chart-title">Top 5 Flavors</div>
+            <canvas id="topFlavorsChart"></canvas>
+        </div>
+        <button id="toggleChartBtn">Switch Chart Type</button>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

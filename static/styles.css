@@ -1,0 +1,66 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0e6ff;
+    color: #4a0e4e;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #8a2be2;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.chart-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #6a0dad;
+    text-align: center;
+}
+
+#toggleChartBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#toggleChartBtn:hover {
+    background-color: #ff1493;
+    transform: scale(1.05);
+}
+
+#toggleChartBtn:active {
+    transform: scale(0.95);
+}
