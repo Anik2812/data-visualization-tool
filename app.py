@@ -3,18 +3,17 @@ import random
 
 app = Flask(__name__)
 
-# Mock data for ice cream flavors and sales
 ice_cream_data = {
     'Vanilla': random.randint(100, 500),
     'Chocolate': random.randint(100, 500),
     'Strawberry': random.randint(100, 500),
-    'Mint Chocolate Chip': random.randint(100, 500),
+    'Mint Chip': random.randint(100, 500),
     'Cookie Dough': random.randint(100, 500),
-    'Butter Pecan': random.randint(100, 500),
-    'Rocky Road': random.randint(100, 500),
-    'Pistachio': random.randint(100, 500),
-    'Neapolitan': random.randint(100, 500),
-    'Coffee': random.randint(100, 500)
+    'Bubblegum': random.randint(100, 500),
+    'Rainbow Sherbet': random.randint(100, 500),
+    'Cotton Candy': random.randint(100, 500),
+    'Unicorn Swirl': random.randint(100, 500),
+    'Dinosaur Crunch': random.randint(100, 500)
 }
 
 @app.route('/')

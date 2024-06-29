@@ -3,23 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ice Cream Flavor Dashboard</title>
+    <title>Scoopville: The Ice Cream Data Wonderland</title>
     <link rel="stylesheet" href="/static/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>🍦 Ice Cream Flavor Dashboard 🍦</h1>
-        <div class="chart-container">
-            <div class="chart-title">Flavor Popularity</div>
-            <canvas id="flavorChart"></canvas>
+    <div id="background-wrapper">
+        <div id="moving-clouds"></div>
+    </div>
+    <div id="ice-cream-cursor"></div>
+    
+    <div id="landing-page" class="scene">
+        <h1 class="main-title">
+            <span class="letter">S</span><span class="letter">c</span><span class="letter">o</span><span class="letter">o</span><span class="letter">p</span><span class="letter">v</span><span class="letter">i</span><span class="letter">l</span><span class="letter">l</span><span class="letter">e</span>
+        </h1>
+        <h2 class="subtitle">The Ice Cream Data Wonderland</h2>
+        <div class="ice-cream-cone">
+            <div class="scoop" id="scoop1"></div>
+            <div class="scoop" id="scoop2"></div>
+            <div class="scoop" id="scoop3"></div>
+            <div class="cone"></div>
         </div>
-        <div class="chart-container">
-            <div class="chart-title">Top 5 Flavors</div>
-            <canvas id="topFlavorsChart"></canvas>
+        <button id="enter-park" class="neon-button">Enter Scoopville!</button>
+    </div>
+
+    <div id="main-park" class="scene hidden">
+        <nav class="park-nav">
+            <button class="nav-btn" data-target="flavor-popularity">Flavor Popularity</button>
+            <button class="nav-btn" data-target="top-flavors">Top Flavors</button>
+            <button class="nav-btn" data-target="create-flavor">Create Flavor</button>
+        </nav>
+        
+        <div id="flavor-popularity" class="park-section">
+            <h2 class="section-title">Flavor Popularity Rollercoaster</h2>
+            <div class="chart-container bouncy">
+                <canvas id="flavorChart"></canvas>
+            </div>
+            <button id="toggleChartBtn" class="park-btn">Switch Ride Type</button>
         </div>
-        <button id="toggleChartBtn">Switch Chart Type</button>
+        
+        <div id="top-flavors" class="park-section hidden">
+            <h2 class="section-title">Top 5 Flavors Ferris Wheel</h2>
+            <div class="chart-container spinning">
+                <canvas id="topFlavorsChart"></canvas>
+            </div>
+        </div>
+        
+        <div id="create-flavor" class="park-section hidden">
+            <h2 class="section-title">Create Your Own Flavor!</h2>
+            <div id="flavor-creator">
+                <input type="text" id="new-flavor-name" placeholder="New Flavor Name">
+                <input type="number" id="new-flavor-popularity" placeholder="Popularity (100-500)">
+                <button id="submitFlavorBtn" class="park-btn">Add to Scoopville!</button>
+            </div>
+        </div>
     </div>
 
     <script src="/static/script.js"></script>

@@ -1,66 +1,441 @@
-body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0e6ff;
-    color: #4a0e4e;
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka+One&display=swap');
+
+:root {
+    --primary-color: #FF85A2;
+    --secondary-color: #7FDBFF;
+    --accent-color: #FFD700;
+    --text-color: #2C3E50;
+    --background-color: #E0F7FA;
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Bubblegum Sans', cursive;
+    overflow-x: hidden;
+    cursor: none;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87CEEB, var(--background-color));
+    z-index: -1;
+}
+
+#moving-clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 100%;
+    background: url('https://i.imgur.com/ZMLoTc4.png') repeat-x;
+    animation: moveClouds 60s linear infinite;
+}
+
+@keyframes moveClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+#ice-cream-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background-image: url('https://i.imgur.com/7YTnkCa.png');
+    background-size: contain;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Landing Page Styles */
+.main-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 5em;
+    margin-bottom: 0;
+    color: var(--primary-color);
+}
+
+.letter {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.letter:hover {
+    transform: translateY(-10px) rotate(10deg);
+}
+
+.subtitle {
+    font-size: 2em;
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+
+.ice-cream-cone {
+    position: relative;
+    width: 150px;
+    height: 250px;
+    margin: 20px auto;
+}
+
+.scoop {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px 75px 0 0;
+    position: absolute;
+}
+
+#scoop1 { background-color: #FF85A2; top: 0; }
+#scoop2 { background-color: #7FDBFF; top: 50px; }
+#scoop3 { background-color: #FFD700; top: 100px; }
+
+.cone {
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-top: 150px solid #D2691E;
+    position: absolute;
+    top: 200px;
+}
+
+.neon-button {
+    font-size: 2em;
+    padding: 20px 40px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Bubblegum Sans', cursive;
+    position: relative;
+    overflow: hidden;
+}
+
+.neon-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        60deg,
+        transparent,
+        transparent 1em,
+        #fff7 1em,
+        #fff7 2em
+    );
+    opacity: 0.1;
+    animation: neon-shine 5s linear infinite;
+}
+
+@keyframes neon-shine {
+    0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
+}
+
+.neon-button:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Main Park Styles */
+.park-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.nav-btn {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.park-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: all 0.5s ease;
+    max-width: 800px;
+    width: 100%;
+}
+
+.chart-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.park-btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+.park-btn:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+#flavor-creator input {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Animations */
+.bouncy {
+    animation: bouncy 3s infinite;
+}
+
+@keyframes bouncy {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.spinning {
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Add this to your existing CSS */
+
+/* Base responsive adjustments */
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    color: #8a2be2;
-    margin-bottom: 30px;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.5s, transform 0.5s;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+/* Responsive typography */
+html {
+    font-size: 16px;
 }
 
-.chart-container {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 30px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s, transform 0.5s;
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
 }
 
-.chart-title {
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+/* Responsive main title */
+.main-title {
+    font-size: 5em;
+}
+
+@media screen and (max-width: 768px) {
+    .main-title {
+        font-size: 4em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-title {
+        font-size: 3em;
+    }
+}
+
+/* Responsive subtitle */
+.subtitle {
+    font-size: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    .subtitle {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .subtitle {
+        font-size: 1.2em;
+    }
+}
+
+/* Responsive ice cream cone */
+.ice-cream-cone {
+    width: 150px;
+    height: 250px;
+}
+
+@media screen and (max-width: 768px) {
+    .ice-cream-cone {
+        width: 120px;
+        height: 200px;
+    }
+    
+    .scoop {
+        width: 120px;
+        height: 120px;
+    }
+    
+    #scoop2 { top: 40px; }
+    #scoop3 { top: 80px; }
+    
+    .cone {
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+        border-top: 120px solid #D2691E;
+        top: 160px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ice-cream-cone {
+        width: 90px;
+        height: 150px;
+    }
+    
+    .scoop {
+        width: 90px;
+        height: 90px;
+    }
+    
+    #scoop2 { top: 30px; }
+    #scoop3 { top: 60px; }
+    
+    .cone {
+        border-left: 45px solid transparent;
+        border-right: 45px solid transparent;
+        border-top: 90px solid #D2691E;
+        top: 120px;
+    }
+}
+
+/* Responsive buttons */
+.neon-button, .park-btn {
     font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #6a0dad;
-    text-align: center;
+    padding: 15px 30px;
 }
 
-#toggleChartBtn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    font-size: 1em;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+@media screen and (max-width: 768px) {
+    .neon-button, .park-btn {
+        font-size: 1.2em;
+        padding: 12px 24px;
+    }
 }
 
-#toggleChartBtn:hover {
-    background-color: #ff1493;
-    transform: scale(1.05);
+@media screen and (max-width: 480px) {
+    .neon-button, .park-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
 }
 
-#toggleChartBtn:active {
-    transform: scale(0.95);
+/* Responsive navigation */
+.park-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-btn {
+    margin: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    .park-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-btn {
+        width: 80%;
+        margin: 5px 0;
+    }
+}
+
+/* Responsive chart containers */
+.chart-container {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive form inputs */
+#flavor-creator input {
+    width: calc(100% - 20px);
+    max-width: 300px;
+}
+
+/* Adjustments for very small screens */
+@media screen and (max-width: 320px) {
+    .main-title {
+        font-size: 2.5em;
+    }
+    
+    .subtitle {
+        font-size: 1em;
+    }
+    
+    .neon-button, .park-btn {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
 }
